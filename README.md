@@ -13,7 +13,8 @@
 | `TY_ACCOUNTS`        | 账号密码组合，格式：`[{"userName":"账号","password":"密码"},...]`      | `[{"userName":"u1","password":"p1"},{"userName":"u2","password":"p2"}]` |
 | `EXEC_THRESHOLD`     | 个人云和家庭云签到线程数（不填或者默认1就行，默认主号签到一次，小号签到10次）                                       | `1`                    |
 | `FAMILYID`           | 家庭云ID抓取教程：[Alist文档](https://alist.nn.ci/zh/guide/drivers/189.html#%E5%AE%B6%E5%BA%AD%E8%BD%AC%E7%A7%BB)  | `123456`                |
-| `WX_PUSHER_UID`      | 微信推送UID（扫码获取）[二维码](https://wxpusher.zjiecode.com/api/qrcode/4Ix7noqD3L7DMBoSlvig3t4hqjFWzPkdHqAYsg8IzkPreW7d8uGUHi9LJO4EcyJg.jpg) | `UID_123`               |
+| `WXPUSHER_UIDS`      | 微信推送UID（扫码获取）[二维码](https://wxpusher.zjiecode.com/api/qrcode/4Ix7noqD3L7DMBoSlvig3t4hqjFWzPkdHqAYsg8IzkPreW7d8uGUHi9LJO4EcyJg.jpg) | `UID_123`               |
+| `WXPUSHER_APP_TOKEN`      | # wxpusher 的 appToken 官方文档: https://wxpusher.zjiecode.com/docs/ 管理后台: https://wxpusher.zjiecode.com/admin/(https://wxpusher.zjiecode.com/api/qrcode/4Ix7noqD3L7DMBoSlvig3t4hqjFWzPkdHqAYsg8IzkPreW7d8uGUHi9LJO4EcyJg.jpg) | ``               |
 
 ---
 **如果EXEC_THRESHOLD不设置。或者设置为1。就主号签到一次个人跟家庭。其他号签到10次家庭。不签到个人。如果EXEC_THRESHOLD设置其他数字。所有号个人签到EXEC_THRESHOLD次数。家庭签到EXEC_THRESHOLD次数。TY_ACCOUNTS账密。跟群主格式一致FAMILYID家庭IDEXEC_THRESHOLD线程。不设置默认保号模式PUSH_PLUS_TOKEN推送
