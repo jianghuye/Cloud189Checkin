@@ -1,67 +1,67 @@
-name: Cloud check in action
-on:
-  push:
-    branches:
-      - main
-      - dev
-  watch:
-    types: started
-  workflow_dispatch:
-  schedule:
-    - cron: '0 3,21 * * *'
-jobs:
-  build-and-deploy-19071507010:
-    runs-on: ubuntu-latest
-    environment: 19071507010
-    steps:
-      - uses: actions/checkout@main
+名称:云检入操作
+在:
+推:
+分支:
+-主要的
+-开发
+看:
+类型:起动
+工作流_发货:
+日程安排:
+-克罗:&#39;0 3,16 * * *&#39;
+工作:
+建造和部署-19071507010:
+运行:ubuntu最新
+环境:19071507010
+步骤:
+-使用:行动/结帐@main
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@main
-        with:
-          node-version: 18
+-名称:设置Node.js环境
+使用:行动/setup-node@main
+具有:
+节点-版本:18
 
-      - name: init secrets
-        uses: shine1594/secrets-to-env-action@master
-        with:
-          secrets: ${{ toJSON(secrets) }}
-          secrets_env: production
-          prefix_prod: ""
-          file_name_prod: .env
+-名称:init机密
+使用:闪亮1594/secret-to-env-action@主人
+具有:
+秘密:${{ toJSON（机密）}}
+分泌型env:生产
+前缀_prod:&#34;&#34;
+文件名_棒: .env（英语）
 
-      - name: init
-        run: npm install
+-名称:初始化
+运行:npm安装
 
-      - name: run
-        id: run
-        uses: nick-fields/retry@master
-        with:
-          timeout_minutes: 50
-          max_attempts: 3
-          command: npm start
+-名称:运行
+身份证件:运行
+使用:缺口字段/重试@master
+具有:
+超时_分钟:50
+最大尝试次数（_A）:3
+命令:npm启动
 
-      - name: Keep Running
-        run: |
-          git config --local user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
-          git config --local user.name "${{ github.actor }}"
-          git remote set-url origin https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}
-          git pull --rebase --autostash
-          git commit --allow-empty -m "Keep Running..."
-          git push
+-名称:继续跑步
+运行:|
+git config--本地用户电子邮件“${{github.actor_id}}${github.actor}}@users.noreply.github.com”
+git-config——本地用户名“${github.actor}}”
+ git远程设置源https:/${github.actor}}:${gitchub.token}}@github.com/${gichub.repository}}
+git pull--rebase--autostash
+git-commit--allow-empty-m“继续运行…”
+git推送
 
-      - name: Delete old workflow run
-        uses: Mattraks/delete-workflow-runs@main
-        with:
-          token: ${{ github.token }}
-          repository: ${{ github.repository }}
-          retain_days: 0
-          keep_minimum_runs: 50
+-名称:删除旧工作流运行
+使用:马特拉克/delete-workflow-runs@main
+具有:
+代币:${{ github.token代币}}
+储存库:${{github.repository（github.repository）}}
+保留_天:0
+保持最小运行次数:50
 
-  build-and-deploy-bing7027:
-    runs-on: ubuntu-latest
-    environment: bing7027
-    steps:
-      - uses: actions/checkout@main
+建造和部署7027:
+运行:ubuntu最新
+环境:冰7027
+步骤:
+-使用:行动/结帐@main
 
       - name: Setup Node.js environment
         uses: actions/setup-node@main
